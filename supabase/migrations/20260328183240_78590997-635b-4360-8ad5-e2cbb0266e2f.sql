@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS quarterly_crossing_access boolean DEFAULT false;

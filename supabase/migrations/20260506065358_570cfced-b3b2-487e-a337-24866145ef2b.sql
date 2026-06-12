@@ -1,0 +1,1 @@
+ALTER TABLE public.leads ALTER COLUMN funnel_source SET DEFAULT 'manual'::funnel_source_t;

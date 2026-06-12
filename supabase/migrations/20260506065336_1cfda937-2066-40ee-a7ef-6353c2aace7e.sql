@@ -1,0 +1,1 @@
+ALTER TYPE public.funnel_source_t ADD VALUE IF NOT EXISTS 'manual';

@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# Build output
+dist/
+build/
+
+# Lovable
+.lovable/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Logs
+*.log
+npm-debug.log*
+bun-error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Type checking cache
+*.tsbuildinfo

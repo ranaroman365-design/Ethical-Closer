@@ -1,0 +1,89 @@
+project_id = "pjufhxzjgdnhvuuvltjn"
+
+[functions]
+  [functions.analyze-call]
+    verify_jwt = false
+  [functions.appointment-ics]
+    verify_jwt = false
+  [functions.automation-scheduler]
+    verify_jwt = false
+  [functions.auth-email-hook]
+    verify_jwt = false
+  [functions.create-test-user]
+    verify_jwt = false
+  [functions.dispatch-webhooks]
+    verify_jwt = false
+  [functions.evaluate-thresholds]
+    verify_jwt = false
+  [functions.generate-daily-leads]
+    verify_jwt = false
+  [functions.process-email-queue]
+    verify_jwt = true
+  [functions.playbook-magic-redeem]
+    verify_jwt = false
+  [functions.dispatch-playbook-promotions]
+    verify_jwt = false
+  [functions.process-outbound-events]
+    verify_jwt = false
+  [functions.return-expired-leads]
+    verify_jwt = false
+  [functions.score-call]
+    verify_jwt = false
+  [functions.send-transactional-email]
+    verify_jwt = true
+  [functions.preview-transactional-email]
+    verify_jwt = false
+  [functions.handle-email-unsubscribe]
+    verify_jwt = false
+  [functions.handle-email-suppression]
+    verify_jwt = false
+  [functions.receive-ghl-webhook]
+    verify_jwt = false
+  [functions.score-lead]
+    verify_jwt = false
+  [functions.process-follow-ups]
+    verify_jwt = false
+  [functions.ghl-event-webhook]
+    verify_jwt = false
+
+  [functions.send-meta-event]
+    verify_jwt = false
+  [functions.transcribe-call]
+    verify_jwt = false
+  [functions.process-pending-analyses]
+    verify_jwt = false
+  [functions.update-scripts-from-patterns]
+    verify_jwt = false
+  [functions.closer-copilot-live-v2]
+    verify_jwt = true
+  [functions.receive-call-recording]
+    verify_jwt = false
+
+  [functions.handle-twilio-webhook]
+    verify_jwt = false
+  [functions.conversational-ai-respond]
+    verify_jwt = false
+  [functions.sales-brain-precall]
+    verify_jwt = true
+  [functions.sales-brain-postcall]
+    verify_jwt = true
+  [functions.learning-loop-ingest]
+    verify_jwt = true
+  [functions.learning-loop-insight]
+    verify_jwt = true
+  [functions.email-documentation-dispatch]
+    verify_jwt = true
+  [functions.push-dispatch]
+    verify_jwt = true
+  [functions.twilio-inbound-webhook]
+    verify_jwt = false
+  [functions.emit-admin-alert]
+    verify_jwt = false
+  [functions.dispatch-communication]
+    verify_jwt = false
+  [functions.receive-external-booking]
+    verify_jwt = false
+  [functions.apply-nurture-enqueue]
+    verify_jwt = false
+  [functions.apply-nurture-process]
+    verify_jwt = false

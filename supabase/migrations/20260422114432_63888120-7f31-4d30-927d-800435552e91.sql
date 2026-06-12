@@ -1,0 +1,1 @@
+ALTER VIEW public.view_retargeting_ab_results SET (security_invoker = true);

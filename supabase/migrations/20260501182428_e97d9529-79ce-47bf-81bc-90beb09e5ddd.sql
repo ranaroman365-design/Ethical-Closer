@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.compute_talent_scores(int, uuid);

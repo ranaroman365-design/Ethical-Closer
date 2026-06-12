@@ -1,0 +1,1 @@
+UPDATE rooms SET config = jsonb_set(config, '{route}', '"/members/dashboard"') WHERE slug = 'dashboard';

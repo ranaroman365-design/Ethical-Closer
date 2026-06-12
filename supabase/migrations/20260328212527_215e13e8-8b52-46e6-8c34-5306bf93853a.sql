@@ -1,0 +1,1 @@
+UPDATE public.profiles SET business_stage = 'setter' WHERE business_stage = 'associate_setter';

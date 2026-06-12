@@ -1,0 +1,1 @@
+ALTER FUNCTION public.evaluate_promotion_canonical(uuid, integer) VOLATILE;

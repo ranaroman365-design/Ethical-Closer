@@ -1,0 +1,1 @@
+ALTER VIEW public.funnel_events SET (security_invoker = true);

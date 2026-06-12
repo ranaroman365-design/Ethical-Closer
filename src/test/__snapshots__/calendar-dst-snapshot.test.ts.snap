@@ -1,0 +1,371 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DST snapshot: Google Calendar link params > CEST→CET 1min after (Oct 25 01:01 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20261025T010100Z/20261025T010600Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CEST→CET 1min before (Oct 25 00:59 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20261025T005900Z/20261025T010000Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CEST→CET exact switch (Oct 25 01:00 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20261025T010000Z/20261025T010500Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CEST→CET spanning 30min (Oct 25 00:55 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20261025T005500Z/20261025T012500Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CET→CEST 1min after (Mar 29 01:01 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20260329T010100Z/20260329T010600Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CET→CEST 1min before (Mar 29 00:59 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20260329T005900Z/20260329T010000Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CET→CEST exact switch (Mar 29 01:00 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20260329T010000Z/20260329T010500Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > CET→CEST spanning 30min (Mar 29 00:55 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20260329T005500Z/20260329T012500Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > Midnight boundary CEST (Jun 20 23:30 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20260620T233000Z/20260621T000000Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Google Calendar link params > New Year midnight (Dec 31 23:00 UTC) 1`] = `
+{
+  "action": "TEMPLATE",
+  "dates": "20261231T230000Z/20270101T000000Z",
+  "details": "",
+  "location": "Online · Video-Call",
+  "text": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CEST→CET 1min after (Oct 25 01:01 UTC) 1`] = `
+"DTSTART:20261025T010100Z
+DTEND:20261025T010600Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CEST→CET 1min before (Oct 25 00:59 UTC) 1`] = `
+"DTSTART:20261025T005900Z
+DTEND:20261025T010000Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CEST→CET exact switch (Oct 25 01:00 UTC) 1`] = `
+"DTSTART:20261025T010000Z
+DTEND:20261025T010500Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CEST→CET spanning 30min (Oct 25 00:55 UTC) 1`] = `
+"DTSTART:20261025T005500Z
+DTEND:20261025T012500Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CET→CEST 1min after (Mar 29 01:01 UTC) 1`] = `
+"DTSTART:20260329T010100Z
+DTEND:20260329T010600Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CET→CEST 1min before (Mar 29 00:59 UTC) 1`] = `
+"DTSTART:20260329T005900Z
+DTEND:20260329T010000Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CET→CEST exact switch (Mar 29 01:00 UTC) 1`] = `
+"DTSTART:20260329T010000Z
+DTEND:20260329T010500Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > CET→CEST spanning 30min (Mar 29 00:55 UTC) 1`] = `
+"DTSTART:20260329T005500Z
+DTEND:20260329T012500Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > Midnight boundary CEST (Jun 20 23:30 UTC) 1`] = `
+"DTSTART:20260620T233000Z
+DTEND:20260621T000000Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: ICS VEVENT content > New Year midnight (Dec 31 23:00 UTC) 1`] = `
+"DTSTART:20261231T230000Z
+DTEND:20270101T000000Z
+SUMMARY:Ethical Closer Qualifikationsgespräch
+DESCRIPTION:
+LOCATION:Online · Video-Call
+STATUS:CONFIRMED
+X-BOOKING-TIMEZONE:Europe/Berlin
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Termin in 15 Minuten
+END:VALARM"
+`;
+
+exports[`DST snapshot: Outlook link params > CEST→CET 1min after (Oct 25 01:01 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-10-25T01:06:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-10-25T01:01:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CEST→CET 1min before (Oct 25 00:59 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-10-25T01:00:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-10-25T00:59:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CEST→CET exact switch (Oct 25 01:00 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-10-25T01:05:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-10-25T01:00:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CEST→CET spanning 30min (Oct 25 00:55 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-10-25T01:25:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-10-25T00:55:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CET→CEST 1min after (Mar 29 01:01 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-03-29T01:06:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-03-29T01:01:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CET→CEST 1min before (Mar 29 00:59 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-03-29T01:00:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-03-29T00:59:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CET→CEST exact switch (Mar 29 01:00 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-03-29T01:05:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-03-29T01:00:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > CET→CEST spanning 30min (Mar 29 00:55 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-03-29T01:25:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-03-29T00:55:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > Midnight boundary CEST (Jun 20 23:30 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2026-06-21T00:00:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-06-20T23:30:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;
+
+exports[`DST snapshot: Outlook link params > New Year midnight (Dec 31 23:00 UTC) 1`] = `
+{
+  "body": "",
+  "enddt": "2027-01-01T00:00:00.000Z",
+  "location": "Online · Video-Call",
+  "path": "/calendar/action/compose",
+  "rru": "addevent",
+  "startdt": "2026-12-31T23:00:00.000Z",
+  "subject": "Ethical Closer Qualifikationsgespräch",
+}
+`;

@@ -1,0 +1,1 @@
+ALTER TABLE public.appointments ADD COLUMN video_call_link text;

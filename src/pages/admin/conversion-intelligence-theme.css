@@ -1,0 +1,686 @@
+/**
+ * Conversion Intelligence — Scoped Premium Dark Theme
+ * ----------------------------------------------------
+ * Activated only on [data-ci-theme="exec-dark"] root.
+ * Does NOT mutate global tokens.
+ */
+
+[data-ci-theme="exec-dark"] {
+  /* Surfaces */
+  --ci-bg: #0b0f14;
+  --ci-bg-soft: #0f141b;
+  --ci-card: #11171f;
+  --ci-card-hover: #141b25;
+  --ci-border: rgba(255, 255, 255, 0.06);
+  --ci-border-strong: rgba(255, 255, 255, 0.12);
+  --ci-divider: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --ci-fg: #e6edf5;
+  --ci-fg-muted: #8a96a6;
+  --ci-fg-dim: #5d6878;
+
+  /* Accents */
+  --ci-accent: #c9a84c;        /* keep brand gold */
+  --ci-accent-soft: rgba(201, 168, 76, 0.12);
+  --ci-pos: #34d399;
+  --ci-neg: #f87171;
+  --ci-warn: #fbbf24;
+  --ci-info: #60a5fa;
+
+  /* Stage colors (top-border gradient per stage) */
+  --ci-stage-1: #60a5fa;
+  --ci-stage-2: #818cf8;
+  --ci-stage-3: #a78bfa;
+  --ci-stage-4: #c084fc;
+  --ci-stage-5: #e879f9;
+  --ci-stage-6: #f472b6;
+  --ci-stage-7: #fb923c;
+  --ci-stage-8: #fbbf24;
+  --ci-stage-9: #34d399;
+
+  background: var(--ci-bg);
+  color: var(--ci-fg);
+  min-height: 100vh;
+}
+
+/* ---------- Card surface ---------- */
+[data-ci-theme="exec-dark"] .ci-card {
+  background: linear-gradient(180deg, var(--ci-card) 0%, var(--ci-bg-soft) 100%);
+  border: 1px solid var(--ci-border);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03) inset,
+    0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+[data-ci-theme="exec-dark"] .ci-card:hover {
+  border-color: var(--ci-border-strong);
+}
+[data-ci-theme="exec-dark"] .ci-card-glow {
+  box-shadow:
+    0 0 0 1px var(--ci-border-strong) inset,
+    0 0 24px -6px rgba(96, 165, 250, 0.15),
+    0 8px 32px -12px rgba(0, 0, 0, 0.7);
+}
+
+/* Override shadcn Card defaults inside the scope */
+[data-ci-theme="exec-dark"] [data-slot="card"],
+[data-ci-theme="exec-dark"] .rounded-lg.border.bg-card,
+[data-ci-theme="exec-dark"] [class*="rounded-xl"][class*="border"][class*="bg-card"] {
+  background: linear-gradient(180deg, var(--ci-card) 0%, var(--ci-bg-soft) 100%) !important;
+  border-color: var(--ci-border) !important;
+  color: var(--ci-fg) !important;
+}
+
+[data-ci-theme="exec-dark"] .text-muted-foreground {
+  color: var(--ci-fg-muted) !important;
+}
+[data-ci-theme="exec-dark"] .text-foreground {
+  color: var(--ci-fg) !important;
+}
+[data-ci-theme="exec-dark"] .border,
+[data-ci-theme="exec-dark"] .border-b,
+[data-ci-theme="exec-dark"] .border-t {
+  border-color: var(--ci-divider) !important;
+}
+[data-ci-theme="exec-dark"] .bg-muted {
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+[data-ci-theme="exec-dark"] .bg-muted\/40:hover,
+[data-ci-theme="exec-dark"] tr:hover {
+  background: var(--ci-card-hover) !important;
+}
+
+/* ---------- Stage cards (visual chain) ---------- */
+[data-ci-theme="exec-dark"] .ci-stage {
+  position: relative;
+  background: linear-gradient(180deg, var(--ci-card) 0%, var(--ci-bg-soft) 100%);
+  border: 1px solid var(--ci-border);
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 220ms ease;
+}
+[data-ci-theme="exec-dark"] .ci-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ci-stage-color, var(--ci-accent)) 30%, var(--ci-stage-color, var(--ci-accent)) 70%, transparent);
+  opacity: 0.85;
+}
+[data-ci-theme="exec-dark"] .ci-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 50% -20%, var(--ci-stage-color, transparent) 0%, transparent 60%);
+  opacity: 0.06;
+  pointer-events: none;
+}
+[data-ci-theme="exec-dark"] .ci-stage:hover {
+  transform: translateY(-1px);
+  border-color: var(--ci-border-strong);
+  box-shadow: 0 0 24px -8px var(--ci-stage-color, rgba(255, 255, 255, 0.1));
+}
+[data-ci-theme="exec-dark"] .ci-stage--weak {
+  border-color: rgba(248, 113, 113, 0.45) !important;
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.2), 0 0 32px -8px rgba(248, 113, 113, 0.35);
+}
+[data-ci-theme="exec-dark"] .ci-stage--medium {
+  border-color: rgba(251, 191, 36, 0.35) !important;
+  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.15);
+}
+
+/* ---------- KPI strip mini cards ---------- */
+[data-ci-theme="exec-dark"] .ci-kpi {
+  background: var(--ci-card);
+  border: 1px solid var(--ci-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: border-color 180ms ease;
+}
+[data-ci-theme="exec-dark"] .ci-kpi:hover {
+  border-color: var(--ci-border-strong);
+}
+
+/* ---------- Buttons / Badges minor polish ---------- */
+[data-ci-theme="exec-dark"] button[data-variant="outline"],
+[data-ci-theme="exec-dark"] .border-input {
+  background: var(--ci-card) !important;
+  border-color: var(--ci-border-strong) !important;
+  color: var(--ci-fg) !important;
+}
+
+/* ---------- Trend chip ---------- */
+[data-ci-theme="exec-dark"] .ci-trend-up { color: var(--ci-pos); }
+[data-ci-theme="exec-dark"] .ci-trend-down { color: var(--ci-neg); }
+
+/* ---------- Sparkline ---------- */
+[data-ci-theme="exec-dark"] .ci-spark path.line {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: ci-spark-draw 900ms ease-out forwards;
+}
+@keyframes ci-spark-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Inputs / Selects ---------- */
+[data-ci-theme="exec-dark"] input,
+[data-ci-theme="exec-dark"] [role="combobox"],
+[data-ci-theme="exec-dark"] [data-slot="select-trigger"] {
+  background: var(--ci-card) !important;
+  border-color: var(--ci-border-strong) !important;
+  color: var(--ci-fg) !important;
+}
+[data-ci-theme="exec-dark"] input::placeholder {
+  color: var(--ci-fg-dim) !important;
+}
+
+/* ---------- Tables ---------- */
+[data-ci-theme="exec-dark"] table thead th {
+  color: var(--ci-fg-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+[data-ci-theme="exec-dark"] table tbody tr {
+  transition: background 140ms ease;
+}
+[data-ci-theme="exec-dark"] table tbody tr:hover {
+  background: var(--ci-card-hover) !important;
+}
+
+/* ============================================================
+ * Visual Replica Mode (premium fintech dashboard layout)
+ * ============================================================ */
+
+/* ---- Header ---- */
+[data-ci-theme="exec-dark"] .ci-page-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: var(--ci-fg);
+}
+[data-ci-theme="exec-dark"] .ci-page-sub {
+  color: var(--ci-fg-muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* ---- Funnel step card (horizontal flow) ---- */
+[data-ci-theme="exec-dark"] .ci-step {
+  position: relative;
+  background: linear-gradient(180deg, var(--ci-card) 0%, var(--ci-bg-soft) 100%);
+  border: 1px solid var(--ci-border);
+  border-radius: 14px;
+  padding: 16px 14px 14px;
+  min-width: 0;
+  width: 100%;
+  text-align: left;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 220ms ease;
+  overflow: hidden;
+}
+[data-ci-theme="exec-dark"] .ci-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--ci-step-color, var(--ci-accent));
+  opacity: 0.9;
+}
+[data-ci-theme="exec-dark"] .ci-step::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% -30%, var(--ci-step-color, transparent) 0%, transparent 55%);
+  opacity: 0.07;
+  pointer-events: none;
+}
+[data-ci-theme="exec-dark"] .ci-step:hover {
+  transform: translateY(-1px);
+  border-color: var(--ci-border-strong);
+  box-shadow: 0 0 28px -10px var(--ci-step-color, rgba(255,255,255,0.12));
+}
+[data-ci-theme="exec-dark"] .ci-step--weak {
+  border-color: rgba(248, 113, 113, 0.5) !important;
+  box-shadow: 0 0 0 1px rgba(248,113,113,0.18), 0 0 32px -8px rgba(248,113,113,0.35);
+}
+[data-ci-theme="exec-dark"] .ci-step--medium {
+  border-color: rgba(251, 191, 36, 0.4) !important;
+}
+[data-ci-theme="exec-dark"] .ci-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 999px;
+  background: var(--ci-step-color, var(--ci-accent));
+  color: #0b0f14;
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+[data-ci-theme="exec-dark"] .ci-step-icon {
+  color: var(--ci-step-color, var(--ci-fg-muted));
+  opacity: 0.9;
+}
+[data-ci-theme="exec-dark"] .ci-step-title {
+  color: var(--ci-fg);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+[data-ci-theme="exec-dark"] .ci-step-desc {
+  color: var(--ci-fg-dim);
+  font-size: 10px;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+[data-ci-theme="exec-dark"] .ci-step-num-big {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ci-fg);
+  margin-top: 8px;
+  line-height: 1;
+}
+[data-ci-theme="exec-dark"] .ci-step-conv {
+  color: var(--ci-fg-muted);
+  font-size: 11px;
+  margin-top: 6px;
+  font-variant-numeric: tabular-nums;
+}
+[data-ci-theme="exec-dark"] .ci-step-arrow {
+  color: var(--ci-fg-dim);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ---- Result panel (right of funnel) ---- */
+[data-ci-theme="exec-dark"] .ci-result {
+  background: linear-gradient(180deg, var(--ci-card) 0%, var(--ci-bg-soft) 100%);
+  border: 1px solid var(--ci-border-strong);
+  border-radius: 14px;
+  padding: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+[data-ci-theme="exec-dark"] .ci-result-row .ci-result-label {
+  color: var(--ci-fg-muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+[data-ci-theme="exec-dark"] .ci-result-row .ci-result-value {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  color: var(--ci-fg);
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+  line-height: 1.1;
+}
+[data-ci-theme="exec-dark"] .ci-result-row .ci-result-value.pos {
+  color: var(--ci-pos);
+}
+
+/* ---- Traffic source bar ---- */
+[data-ci-theme="exec-dark"] .ci-traffic-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 12px;
+}
+[data-ci-theme="exec-dark"] .ci-traffic-bar-track {
+  position: relative;
+  height: 6px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+[data-ci-theme="exec-dark"] .ci-traffic-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--ci-bar-color, var(--ci-info)), var(--ci-bar-color, var(--ci-info)) 70%, transparent);
+  border-radius: 999px;
+  transition: width 380ms ease;
+}
+
+/* ---- KPI strip with icons + trend ---- */
+[data-ci-theme="exec-dark"] .ci-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ci-card);
+  border: 1px solid var(--ci-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-width: 0;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-card:hover {
+  border-color: var(--ci-border-strong);
+  transform: translateY(-1px);
+}
+[data-ci-theme="exec-dark"] .ci-kpi-card .ci-kpi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: var(--ci-fg-muted);
+  flex-shrink: 0;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-label {
+  color: var(--ci-fg-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-value {
+  color: var(--ci-fg);
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-trend {
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 1px;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-trend.up { color: var(--ci-pos); }
+[data-ci-theme="exec-dark"] .ci-kpi-trend.down { color: var(--ci-neg); }
+[data-ci-theme="exec-dark"] .ci-kpi-trend.flat { color: var(--ci-fg-dim); }
+
+/* ---- Bottleneck panel ---- */
+[data-ci-theme="exec-dark"] .ci-bottleneck-card {
+  background: linear-gradient(180deg, rgba(248,113,113,0.06) 0%, var(--ci-card) 100%);
+  border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+[data-ci-theme="exec-dark"] .ci-bottleneck-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  overflow: hidden;
+}
+[data-ci-theme="exec-dark"] .ci-bottleneck-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ci-neg), #fca5a5);
+  border-radius: 999px;
+  transition: width 420ms ease;
+}
+
+/* ---- Section heading ---- */
+[data-ci-theme="exec-dark"] .ci-section-h {
+  color: var(--ci-fg);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-ci-theme="exec-dark"] .ci-section-sub {
+  color: var(--ci-fg-dim);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+/* Mobile responsive: funnel stacks vertically, arrows rotate */
+@media (max-width: 1023px) {
+  [data-ci-theme="exec-dark"] .ci-funnel-flow {
+    flex-direction: column !important;
+  }
+  [data-ci-theme="exec-dark"] .ci-step-arrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}
+
+/* ============================================================
+ * Animation & Micro-Interaction Layer
+ * Calm · precise · fast · intentional
+ * Durations 120–220ms · ease-out · GPU transforms only
+ * ============================================================ */
+
+/* ---- Page-load stagger (cards fade + 8px lift) ---- */
+@keyframes ci-enter {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+[data-ci-theme="exec-dark"] .ci-card,
+[data-ci-theme="exec-dark"] .ci-step,
+[data-ci-theme="exec-dark"] .ci-kpi-card,
+[data-ci-theme="exec-dark"] .ci-result,
+[data-ci-theme="exec-dark"] .ci-bottleneck-card,
+[data-ci-theme="exec-dark"] [data-slot="card"] {
+  animation: ci-enter 220ms ease-out both;
+  will-change: transform, opacity;
+}
+/* Stagger 20ms — applied to direct children of any grid/flex inside scope */
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(1)  { animation-delay: 0ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(2)  { animation-delay: 20ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(3)  { animation-delay: 40ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(4)  { animation-delay: 60ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(5)  { animation-delay: 80ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(6)  { animation-delay: 80ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(7)  { animation-delay: 80ms; }
+[data-ci-theme="exec-dark"] .ci-stagger > *:nth-child(n+8){ animation-delay: 80ms; }
+
+/* ---- Funnel step: hover lift + click press ---- */
+[data-ci-theme="exec-dark"] .ci-step,
+[data-ci-theme="exec-dark"] .ci-stage {
+  transition:
+    transform 160ms ease-out,
+    border-color 160ms ease-out,
+    background-color 160ms ease-out,
+    box-shadow 200ms ease-out;
+}
+[data-ci-theme="exec-dark"] .ci-step:hover,
+[data-ci-theme="exec-dark"] .ci-stage:hover {
+  transform: translate3d(0, -1px, 0) scale(1.01);
+  background-color: var(--ci-card-hover);
+}
+[data-ci-theme="exec-dark"] .ci-step:active,
+[data-ci-theme="exec-dark"] .ci-stage:active {
+  transform: translate3d(0, 0, 0) scale(0.99);
+  transition-duration: 80ms;
+}
+
+/* ---- KPI cards: subtle hover ---- */
+[data-ci-theme="exec-dark"] .ci-kpi-card,
+[data-ci-theme="exec-dark"] .ci-kpi {
+  transition: border-color 160ms ease-out, transform 160ms ease-out, background-color 160ms ease-out;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-card:hover .ci-kpi-icon {
+  opacity: 1;
+  color: var(--ci-fg);
+}
+[data-ci-theme="exec-dark"] .ci-kpi-card:hover .ci-kpi-value {
+  font-weight: 600;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-icon {
+  transition: opacity 160ms ease-out, color 160ms ease-out;
+}
+[data-ci-theme="exec-dark"] .ci-kpi-value {
+  transition: font-weight 160ms ease-out;
+}
+
+/* ---- Trend indicator fade-in ---- */
+@keyframes ci-trend-in {
+  from { opacity: 0; transform: translate3d(0, 2px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+[data-ci-theme="exec-dark"] .ci-kpi-trend,
+[data-ci-theme="exec-dark"] .ci-trend-up,
+[data-ci-theme="exec-dark"] .ci-trend-down {
+  animation: ci-trend-in 200ms ease-out both;
+}
+
+/* ---- Table rows: hover highlight + left indicator line ---- */
+[data-ci-theme="exec-dark"] table tbody tr {
+  position: relative;
+  transition: background-color 140ms ease-out;
+}
+[data-ci-theme="exec-dark"] table tbody tr::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--ci-accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 160ms ease-out;
+}
+[data-ci-theme="exec-dark"] table tbody tr:hover::before {
+  transform: scaleY(1);
+}
+
+/* ---- Bottleneck panel: one-shot soft pulse ---- */
+@keyframes ci-pulse-once {
+  0%   { box-shadow: 0 0 0 0 rgba(248,113,113,0.0); }
+  40%  { box-shadow: 0 0 0 6px rgba(248,113,113,0.18); }
+  100% { box-shadow: 0 0 0 0 rgba(248,113,113,0.0); }
+}
+[data-ci-theme="exec-dark"] .ci-bottleneck-card {
+  animation: ci-enter 220ms ease-out both, ci-pulse-once 1400ms ease-out 220ms 1;
+}
+
+/* ---- Bottleneck / traffic bars: animate from 0 → value ---- */
+@keyframes ci-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+[data-ci-theme="exec-dark"] .ci-bottleneck-bar-fill,
+[data-ci-theme="exec-dark"] .ci-traffic-bar-fill {
+  transform-origin: left center;
+  animation: ci-bar-grow 420ms ease-out both;
+  will-change: transform;
+}
+
+/* ---- Flow connector dot (between stages) ---- */
+@keyframes ci-flow-dot {
+  0%   { transform: translate3d(-100%, 0, 0); opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.5; }
+  100% { transform: translate3d(100%, 0, 0); opacity: 0; }
+}
+[data-ci-theme="exec-dark"] .ci-step-arrow {
+  position: relative;
+  overflow: hidden;
+}
+[data-ci-theme="exec-dark"] .ci-step-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4px; height: 4px;
+  border-radius: 999px;
+  background: var(--ci-fg-muted);
+  margin-top: -2px;
+  animation: ci-flow-dot 2400ms ease-in-out infinite;
+  opacity: 0;
+}
+
+/* ---- Drilldown panel: slide-in from right (desktop) ---- */
+@keyframes ci-slide-in-right {
+  from { opacity: 0; transform: translate3d(12px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes ci-slide-up {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+[data-ci-theme="exec-dark"] .ci-drilldown {
+  animation: ci-slide-in-right 180ms ease-out both;
+}
+@media (max-width: 767px) {
+  [data-ci-theme="exec-dark"] .ci-drilldown {
+    animation: ci-slide-up 180ms ease-out both;
+  }
+}
+
+/* ---- Lead timeline: sequential fade+slide ---- */
+[data-ci-theme="exec-dark"] .ci-timeline > * {
+  animation: ci-enter 200ms ease-out both;
+}
+[data-ci-theme="exec-dark"] .ci-timeline > *:nth-child(1) { animation-delay: 0ms; }
+[data-ci-theme="exec-dark"] .ci-timeline > *:nth-child(2) { animation-delay: 40ms; }
+[data-ci-theme="exec-dark"] .ci-timeline > *:nth-child(3) { animation-delay: 80ms; }
+[data-ci-theme="exec-dark"] .ci-timeline > *:nth-child(4) { animation-delay: 80ms; }
+[data-ci-theme="exec-dark"] .ci-timeline > *:nth-child(n+5) { animation-delay: 80ms; }
+
+/* ---- Buttons: hover brightness + click compress ---- */
+[data-ci-theme="exec-dark"] button,
+[data-ci-theme="exec-dark"] [role="button"] {
+  transition:
+    filter 140ms ease-out,
+    transform 100ms ease-out,
+    box-shadow 160ms ease-out,
+    background-color 140ms ease-out,
+    border-color 140ms ease-out;
+}
+[data-ci-theme="exec-dark"] button:hover,
+[data-ci-theme="exec-dark"] [role="button"]:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 2px 8px -4px rgba(0,0,0,0.5);
+}
+[data-ci-theme="exec-dark"] button:active,
+[data-ci-theme="exec-dark"] [role="button"]:active {
+  transform: scale(0.98);
+}
+
+/* ---- Smooth scroll within scope ---- */
+[data-ci-theme="exec-dark"] {
+  scroll-behavior: smooth;
+}
+
+/* ---- Mobile: reduce motion intensity, no hover transforms ---- */
+@media (max-width: 767px) {
+  [data-ci-theme="exec-dark"] .ci-step:hover,
+  [data-ci-theme="exec-dark"] .ci-stage:hover,
+  [data-ci-theme="exec-dark"] .ci-kpi-card:hover {
+    transform: none;
+  }
+  [data-ci-theme="exec-dark"] .ci-step-arrow::after {
+    animation: none;
+  }
+  [data-ci-theme="exec-dark"] .ci-card,
+  [data-ci-theme="exec-dark"] .ci-step,
+  [data-ci-theme="exec-dark"] .ci-kpi-card {
+    animation-duration: 160ms;
+  }
+}
+
+/* ---- Respect user reduced-motion preference ---- */
+@media (prefers-reduced-motion: reduce) {
+  [data-ci-theme="exec-dark"] *,
+  [data-ci-theme="exec-dark"] *::before,
+  [data-ci-theme="exec-dark"] *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

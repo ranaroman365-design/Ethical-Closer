@@ -1,0 +1,10 @@
+CREATE OR REPLACE FUNCTION public.calc_referral_payout(idx INTEGER)
+RETURNS NUMERIC LANGUAGE sql IMMUTABLE SET search_path = public AS $$
+  SELECT CASE
+    WHEN idx = 1 THEN 150
+    WHEN idx = 2 THEN 300
+    WHEN idx BETWEEN 3 AND 4 THEN 400
+    WHEN idx >= 5 THEN 500
+    ELSE 0
+  END::NUMERIC;
+$$;

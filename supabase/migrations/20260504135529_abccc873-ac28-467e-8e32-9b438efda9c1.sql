@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS public.create_manual_appointment(uuid, timestamp with time zone, timestamp with time zone, text, boolean, text);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Meta Pixel — CONSENT-GATED.
+      The fbevents.js loader is intentionally NOT included here. It is
+      injected by src/lib/meta-pixel-consent.ts only after the visitor
+      grants consent via the cookie banner (or on subsequent loads if
+      consent was previously granted). This guarantees zero tracking
+      before opt-in and exactly one PageView per page-load after opt-in.
+    -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ethical Top Closer™ – High-Ticket Closing System</title>
+    <meta name="description" content="High-Ticket Closing mit Integrität. Leistungsbasiertes Einkommen statt 9–5. Strukturiert. Praxisnah. Commitment-basiert.">
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ethicalcloser.de" />
+    <meta property="og:title" content="Ethical Top Closer™ – High-Ticket Closing System">
+    <meta property="og:description" content="Werde für Entscheidungen bezahlt – nicht für Zeit. Das erste Closing-System mit klaren KPIs, Struktur und Placement-Pfad.">
+    <meta property="og:image" content="https://ethical-closing.lovable.app/og-image.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ethical Top Closer™ – High-Ticket Closing System">
+    <meta name="twitter:description" content="Werde für Entscheidungen bezahlt – nicht für Zeit. Das erste Closing-System mit klaren KPIs, Struktur und Placement-Pfad.">
+    <meta name="twitter:image" content="https://ethical-closing.lovable.app/og-image.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Performance: shipped 3 font families (Cormorant + Inter + Playfair, 16+ files)
+      blocking render. Reduced to 2 families with minimal weights and made the
+      stylesheet async so it never blocks FCP. font-display: swap means body text
+      paints in the system fallback first and re-paints when the WOFFs arrive.
+      Playfair Display kept as standalone async chunk for /members/certification.
+    -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Inter:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'; this.onload=null;"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Inter:wght@400;500&display=swap"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Inter:wght@400;500&display=swap" />
+    </noscript>
+  </head>
+  <body>
+    <!--
+      No <noscript> Meta Pixel fallback: an unconditional tracking pixel
+      would bypass consent. Visitors with JS disabled are not tracked.
+    -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

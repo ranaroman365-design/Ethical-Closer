@@ -1,0 +1,1 @@
+UPDATE public.rooms SET config = '{"route": "/members/earn-dashboard", "icon": "Wallet", "label": "Earn Dashboard", "visible": true}'::jsonb WHERE slug = 'earn-dashboard';

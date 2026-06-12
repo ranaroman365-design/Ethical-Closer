@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium warm neutral palette */
+    --background: 40 20% 96%;
+    --foreground: 30 10% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 12%;
+
+    --primary: 152 28% 20%;
+    --primary-foreground: 40 20% 96%;
+
+    --secondary: 35 14% 86%;
+    --secondary-foreground: 30 10% 12%;
+
+    --muted: 36 12% 90%;
+    --muted-foreground: 30 8% 46%;
+
+    --accent: 36 32% 52%;
+    --accent-foreground: 30 10% 12%;
+
+    --destructive: 4 60% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 36 14% 84%;
+    --input: 36 14% 84%;
+    --ring: 152 28% 20%;
+
+    --radius: 0.5rem;
+
+    /* Semantic status tokens */
+    --success: 152 40% 40%;
+    --success-muted: 152 30% 94%;
+    --warning: 38 80% 52%;
+    --warning-muted: 38 50% 94%;
+    --danger: 4 60% 52%;
+    --danger-muted: 4 40% 95%;
+    --info: 215 20% 55%;
+    --info-muted: 215 15% 94%;
+
+    /* Signal CTA — high-contrast conversion orange/red */
+    --signal: 14 92% 52%;
+    --signal-foreground: 0 0% 100%;
+    --signal-hover: 14 92% 46%;
+
+    /* Premium surface tokens */
+    --surface-elevated: 0 0% 100%;
+    --surface-sunken: 38 14% 93%;
+    --surface-overlay: 30 10% 12% / 0.04;
+
+    /* Funnel palette */
+    --funnel-sand: 30 32% 85%;
+    --funnel-teal: 173 18% 57%;
+    --funnel-red: 11 50% 54%;
+    --funnel-grey: 216 4% 44%;
+    --funnel-purple: 298 19% 30%;
+    --funnel-gold: 36 37% 60%;
+    --funnel-warm-bg: 30 27% 94%;
+    --funnel-dark: 0 0% 17%;
+
+    /* Sidebar */
+    --sidebar-background: 40 15% 97%;
+    --sidebar-foreground: 30 10% 25%;
+    --sidebar-primary: 30 10% 12%;
+    --sidebar-primary-foreground: 40 20% 96%;
+    --sidebar-accent: 36 14% 93%;
+    --sidebar-accent-foreground: 30 10% 12%;
+    --sidebar-border: 36 14% 88%;
+    --sidebar-ring: 152 28% 20%;
+  }
+
+  .dark {
+    --background: 25 10% 8%;
+    --foreground: 36 15% 92%;
+    --card: 25 10% 11%;
+    --card-foreground: 36 15% 92%;
+    --popover: 25 10% 11%;
+    --popover-foreground: 36 15% 92%;
+    --primary: 36 32% 52%;
+    --primary-foreground: 25 10% 8%;
+    --secondary: 25 8% 16%;
+    --secondary-foreground: 36 15% 92%;
+    --muted: 25 8% 16%;
+    --muted-foreground: 36 12% 58%;
+    --accent: 36 32% 52%;
+    --accent-foreground: 25 10% 8%;
+    --destructive: 4 50% 38%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 8% 20%;
+    --input: 25 8% 20%;
+    --ring: 36 32% 52%;
+
+    --success: 152 35% 45%;
+    --success-muted: 152 20% 14%;
+    --warning: 38 70% 48%;
+    --warning-muted: 38 30% 14%;
+    --danger: 4 55% 45%;
+    --danger-muted: 4 30% 14%;
+    --info: 215 18% 50%;
+    --info-muted: 215 12% 14%;
+
+    --surface-elevated: 25 8% 14%;
+    --surface-sunken: 25 10% 6%;
+    --surface-overlay: 36 15% 92% / 0.04;
+
+    --signal: 14 92% 56%;
+    --signal-foreground: 0 0% 100%;
+    --signal-hover: 14 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Premium hover elevation — subtle, GPU-friendly */
+  .hover-elevate {
+    @apply transition-all duration-200 ease-out;
+  }
+  .hover-elevate:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px -8px hsl(var(--foreground) / 0.12);
+  }
+
+  /* Soft fade-up for section entrances */
+  .animate-section-in {
+    animation: section-in 0.25s ease-out both;
+  }
+}
+
+/* ── Haptic visual pulse fallback (iOS/Safari) ───────────────────── */
+@keyframes haptic-pulse-light {
+  0%   { transform: scale(1);    opacity: 1; }
+  50%  { transform: scale(1.03); opacity: 0.85; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+@keyframes haptic-pulse-medium {
+  0%   { transform: scale(1);    opacity: 1; }
+  40%  { transform: scale(1.06); opacity: 0.8; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+@keyframes haptic-pulse-heavy {
+  0%   { transform: scale(1);    opacity: 1; }
+  35%  { transform: scale(1.10); opacity: 0.75; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+.haptic-pulse-light  { animation: haptic-pulse-light  0.18s ease-out; }
+.haptic-pulse-medium { animation: haptic-pulse-medium 0.22s ease-out; }
+.haptic-pulse-heavy  { animation: haptic-pulse-heavy  0.28s ease-out; }
+
+/* ── Premium animation system ────────────────────────────────────── */
+@keyframes section-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Active communication path — moving dot along edge.
+   Used in SystemArchitectureView (Layer 45) expanded mode. */
+@keyframes path-pulse {
+  0%   { opacity: 0; transform: translateX(-100%); }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+.path-pulse-dot {
+  animation: path-pulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Status dot — subtle steady pulse for "active" states only */
+@keyframes status-breathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+.status-active-pulse {
+  animation: status-breathe 2.8s ease-in-out infinite;
+}
+
+/* ── Accessibility: respect reduced-motion globally ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .path-pulse-dot,
+  .status-active-pulse,
+  .animate-section-in,
+  .haptic-pulse-light,
+  .haptic-pulse-medium,
+  .haptic-pulse-heavy {
+    animation: none !important;
+  }
+}
+
+@media print {
+  #webinar-scroll {
+    overflow: visible !important;
+    height: auto !important;
+    scroll-snap-type: none !important;
+  }
+
+  #webinar-scroll > section {
+    min-height: auto !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .fixed,
+  [class*="sticky"] {
+    display: none !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+/* Sticky CTA — post-pulse focus boost wiggle.
+   Layout-safe: only translateX (±2px), no width/height/margin changes.
+   Used by ApplyLanding.tsx StickyCta when highlight pulse ends. */
+@keyframes sticky-attention {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Kill the wiggle for users who opted out — visual ring still communicates focus. */
+  .animate-\[sticky-attention_0\.9s_ease-in-out_2\] {
+    animation: none !important;
+  }
+}

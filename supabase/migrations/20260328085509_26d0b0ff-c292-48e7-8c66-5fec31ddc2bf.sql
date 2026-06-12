@@ -1,0 +1,1 @@
+ALTER TABLE public.flagged_messages ADD COLUMN IF NOT EXISTS admin_notes text DEFAULT NULL;
