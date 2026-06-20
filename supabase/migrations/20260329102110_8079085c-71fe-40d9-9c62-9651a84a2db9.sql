@@ -3,7 +3,16 @@
 INSERT INTO user_level_status (user_id, current_level, current_role_label)
 SELECT DISTINCT c.user_id, 0, 'Bewerber'
 FROM calls c
-WHERE NOT EXISTS (SELECT 1 FROM user_level_status uls WHERE uls.user_id = c.user_id)
+WHERE EXISTS (
+  SELECT 1
+  FROM profiles p
+  WHERE p.id = c.user_id
+)
+AND NOT EXISTS (
+  SELECT 1
+  FROM user_level_status uls
+  WHERE uls.user_id = c.user_id
+)
 ON CONFLICT (user_id) DO NOTHING;
 
 -- Fix recalculate_certification to handle NULL level
@@ -163,7 +172,11 @@ $$;
 DO $$
 DECLARE r record; v_result jsonb;
 BEGIN
-  FOR r IN SELECT DISTINCT user_id FROM calls LOOP
+  FOR r IN
+    SELECT DISTINCT c.user_id
+    FROM calls c
+    JOIN profiles p ON p.id = c.user_id
+  LOOP
     v_result := recalculate_certification(r.user_id);
   END LOOP;
 END;
