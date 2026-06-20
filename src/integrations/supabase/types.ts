@@ -10,7 +10,32 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.1"
+    PostgrestVersion: "14.5"
+  }
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          extensions?: Json
+          operationName?: string
+          query?: string
+          variables?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
   }
   public: {
     Tables: {
@@ -598,7 +623,6 @@ export type Database = {
       ab_slot_weights: {
         Row: {
           booking_count: number
-          confidence: number
           confidence_level: string
           confidence_reason: string[]
           confidence_score: number
@@ -612,12 +636,10 @@ export type Database = {
           last_confidence_update: string | null
           lead_count: number
           paused: boolean
-          qualified_count: number
           quiz_completed_count: number
           quiz_started_count: number
           score: number
           shift_allowed: boolean
-          showup_count: number
           slot: string
           updated_at: string
           variance_indicator: number
@@ -628,7 +650,6 @@ export type Database = {
         }
         Insert: {
           booking_count?: number
-          confidence?: number
           confidence_level?: string
           confidence_reason?: string[]
           confidence_score?: number
@@ -642,12 +663,10 @@ export type Database = {
           last_confidence_update?: string | null
           lead_count?: number
           paused?: boolean
-          qualified_count?: number
           quiz_completed_count?: number
           quiz_started_count?: number
           score?: number
           shift_allowed?: boolean
-          showup_count?: number
           slot: string
           updated_at?: string
           variance_indicator?: number
@@ -658,7 +677,6 @@ export type Database = {
         }
         Update: {
           booking_count?: number
-          confidence?: number
           confidence_level?: string
           confidence_reason?: string[]
           confidence_score?: number
@@ -672,12 +690,10 @@ export type Database = {
           last_confidence_update?: string | null
           lead_count?: number
           paused?: boolean
-          qualified_count?: number
           quiz_completed_count?: number
           quiz_started_count?: number
           score?: number
           shift_allowed?: boolean
-          showup_count?: number
           slot?: string
           updated_at?: string
           variance_indicator?: number
@@ -16920,13 +16936,9 @@ export type Database = {
         Row: {
           active: boolean
           created_at: string
-          director_email: string | null
           funnel_id: string | null
-          is_active: boolean
           label: string
-          landingpage_path: string | null
           notes: string | null
-          operator_email: string | null
           origin_id: string
           origin_type: string
           owner_user_id: string | null
@@ -16935,13 +16947,9 @@ export type Database = {
         Insert: {
           active?: boolean
           created_at?: string
-          director_email?: string | null
           funnel_id?: string | null
-          is_active?: boolean
           label: string
-          landingpage_path?: string | null
           notes?: string | null
-          operator_email?: string | null
           origin_id: string
           origin_type: string
           owner_user_id?: string | null
@@ -16950,13 +16958,9 @@ export type Database = {
         Update: {
           active?: boolean
           created_at?: string
-          director_email?: string | null
           funnel_id?: string | null
-          is_active?: boolean
           label?: string
-          landingpage_path?: string | null
           notes?: string | null
-          operator_email?: string | null
           origin_id?: string
           origin_type?: string
           owner_user_id?: string | null
@@ -26194,21 +26198,7 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "operator_performance_metrics"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "operator_performance_metrics"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "operator_performance_metrics"
             referencedColumns: ["user_id"]
@@ -26222,14 +26212,28 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "operator_performance_metrics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "operator_performance_metrics"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["traffic_owner"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["traffic_owner"]
+            columns: ["team_member_id"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -26243,9 +26247,30 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["traffic_owner"]
+            isOneToOne: false
+            referencedRelation: "public_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["team_member_id"]
+            isOneToOne: false
+            referencedRelation: "public_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "public_profiles"
             referencedColumns: ["id"]
           },
           {
@@ -26259,33 +26284,12 @@ export type Database = {
             foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
             isOneToOne: false
-            referencedRelation: "public_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
-            isOneToOne: false
-            referencedRelation: "public_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
-            isOneToOne: false
-            referencedRelation: "public_profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "real_users_view"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["traffic_owner"]
+            columns: ["team_member_id"]
             isOneToOne: false
             referencedRelation: "real_users_view"
             referencedColumns: ["id"]
@@ -26299,28 +26303,14 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "real_users_view"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "revenue_operator_profile"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "revenue_operator_profile"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "revenue_operator_profile"
             referencedColumns: ["user_id"]
@@ -26334,14 +26324,28 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_profile"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_profile"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["traffic_owner"]
             isOneToOne: false
             referencedRelation: "revenue_operator_profile_public"
             referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["traffic_owner"]
+            columns: ["team_member_id"]
             isOneToOne: false
             referencedRelation: "revenue_operator_profile_public"
             referencedColumns: ["user_id"]
@@ -26355,9 +26359,30 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "revenue_operator_profile_public"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["traffic_owner"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_promotion_overlay"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["team_member_id"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_promotion_overlay"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_promotion_overlay"
             referencedColumns: ["user_id"]
           },
           {
@@ -26371,33 +26396,12 @@ export type Database = {
             foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
             isOneToOne: false
-            referencedRelation: "revenue_operator_promotion_overlay"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
-            isOneToOne: false
-            referencedRelation: "revenue_operator_promotion_overlay"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
-            isOneToOne: false
-            referencedRelation: "revenue_operator_promotion_overlay"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "team_membership_contract"
             referencedColumns: ["team_member_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["traffic_owner"]
+            columns: ["team_member_id"]
             isOneToOne: false
             referencedRelation: "team_membership_contract"
             referencedColumns: ["team_member_id"]
@@ -26411,28 +26415,14 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "team_membership_contract"
             referencedColumns: ["team_member_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "user_access_contract"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "user_access_contract"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "user_access_contract"
             referencedColumns: ["user_id"]
@@ -26446,21 +26436,21 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "user_access_contract"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "v_community_access_mismatches"
+            referencedRelation: "user_access_contract"
             referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "v_community_access_mismatches"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "v_community_access_mismatches"
             referencedColumns: ["user_id"]
@@ -26474,21 +26464,21 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "v_community_access_mismatches"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "view_director_team_kpis"
+            referencedRelation: "v_community_access_mismatches"
             referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "view_director_team_kpis"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "view_director_team_kpis"
             referencedColumns: ["user_id"]
@@ -26502,21 +26492,21 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "view_director_team_kpis"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "view_performance_rankings"
+            referencedRelation: "view_director_team_kpis"
             referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["traffic_owner"]
-            isOneToOne: false
-            referencedRelation: "view_performance_rankings"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "view_performance_rankings"
             referencedColumns: ["user_id"]
@@ -26530,9 +26520,16 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "view_performance_rankings"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "view_user_promotion_status"
+            referencedRelation: "view_performance_rankings"
             referencedColumns: ["user_id"]
           },
           {
@@ -26544,6 +26541,13 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
+            columns: ["team_member_id"]
+            isOneToOne: false
+            referencedRelation: "view_user_promotion_status"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "operator_team_members_member_id_fkey"
             columns: ["member_id"]
             isOneToOne: false
             referencedRelation: "view_user_promotion_status"
@@ -26551,7 +26555,7 @@ export type Database = {
           },
           {
             foreignKeyName: "operator_team_members_member_id_fkey"
-            columns: ["team_member_id"]
+            columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "view_user_promotion_status"
             referencedColumns: ["user_id"]
@@ -28552,13 +28556,6 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "profiles_director_id_fkey"
-            columns: ["manager_id"]
-            isOneToOne: false
-            referencedRelation: "operator_performance_metrics"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "profiles_director_id_fkey"
             columns: ["operator_id"]
             isOneToOne: false
             referencedRelation: "operator_performance_metrics"
@@ -28568,8 +28565,8 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
+            referencedRelation: "operator_performance_metrics"
+            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "profiles_director_id_fkey"
@@ -28582,7 +28579,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "public_profiles"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -28596,7 +28593,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "real_users_view"
+            referencedRelation: "public_profiles"
             referencedColumns: ["id"]
           },
           {
@@ -28610,6 +28607,20 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
+            referencedRelation: "real_users_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_director_id_fkey"
+            columns: ["operator_id"]
+            isOneToOne: false
+            referencedRelation: "revenue_operator_profile"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "profiles_director_id_fkey"
+            columns: ["manager_id"]
+            isOneToOne: false
             referencedRelation: "revenue_operator_profile"
             referencedColumns: ["user_id"]
           },
@@ -28617,7 +28628,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["operator_id"]
             isOneToOne: false
-            referencedRelation: "revenue_operator_profile"
+            referencedRelation: "revenue_operator_profile_public"
             referencedColumns: ["user_id"]
           },
           {
@@ -28631,7 +28642,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["operator_id"]
             isOneToOne: false
-            referencedRelation: "revenue_operator_profile_public"
+            referencedRelation: "revenue_operator_promotion_overlay"
             referencedColumns: ["user_id"]
           },
           {
@@ -28645,8 +28656,8 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["operator_id"]
             isOneToOne: false
-            referencedRelation: "revenue_operator_promotion_overlay"
-            referencedColumns: ["user_id"]
+            referencedRelation: "team_membership_contract"
+            referencedColumns: ["team_member_id"]
           },
           {
             foreignKeyName: "profiles_director_id_fkey"
@@ -28659,20 +28670,6 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["operator_id"]
             isOneToOne: false
-            referencedRelation: "team_membership_contract"
-            referencedColumns: ["team_member_id"]
-          },
-          {
-            foreignKeyName: "profiles_director_id_fkey"
-            columns: ["manager_id"]
-            isOneToOne: false
-            referencedRelation: "user_access_contract"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "profiles_director_id_fkey"
-            columns: ["operator_id"]
-            isOneToOne: false
             referencedRelation: "user_access_contract"
             referencedColumns: ["user_id"]
           },
@@ -28680,7 +28677,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "v_community_access_mismatches"
+            referencedRelation: "user_access_contract"
             referencedColumns: ["user_id"]
           },
           {
@@ -28694,7 +28691,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "view_director_team_kpis"
+            referencedRelation: "v_community_access_mismatches"
             referencedColumns: ["user_id"]
           },
           {
@@ -28708,7 +28705,7 @@ export type Database = {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
             isOneToOne: false
-            referencedRelation: "view_performance_rankings"
+            referencedRelation: "view_director_team_kpis"
             referencedColumns: ["user_id"]
           },
           {
@@ -28721,13 +28718,20 @@ export type Database = {
           {
             foreignKeyName: "profiles_director_id_fkey"
             columns: ["manager_id"]
+            isOneToOne: false
+            referencedRelation: "view_performance_rankings"
+            referencedColumns: ["user_id"]
+          },
+          {
+            foreignKeyName: "profiles_director_id_fkey"
+            columns: ["operator_id"]
             isOneToOne: false
             referencedRelation: "view_user_promotion_status"
             referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "profiles_director_id_fkey"
-            columns: ["operator_id"]
+            columns: ["manager_id"]
             isOneToOne: false
             referencedRelation: "view_user_promotion_status"
             referencedColumns: ["user_id"]
@@ -31388,7 +31392,6 @@ export type Database = {
           shows: number
         }[]
       }
-      perf_director_aggregate: { Args: { _days?: number }; Returns: Json }
       perf_executive_strip: { Args: { _days?: number }; Returns: Json }
       perf_funnel_comparison: {
         Args: { _days?: number }
@@ -31433,7 +31436,6 @@ export type Database = {
         }[]
       }
       perf_operator_eligibility: { Args: { _days?: number }; Returns: Json }
-      perf_operator_own_performance: { Args: { _days?: number }; Returns: Json }
       perf_origin_performance: {
         Args: { _days?: number }
         Returns: {
@@ -32513,6 +32515,9 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
+  graphql_public: {
+    Enums: {},
+  },
   public: {
     Enums: {
       app_role: [
