@@ -1,8 +1,10 @@
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
+
 -- Payment Links Tabelle
 CREATE TABLE IF NOT EXISTS public.payment_links (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  token           TEXT UNIQUE NOT NULL DEFAULT encode(gen_random_bytes(16), 'hex'),
+  token           TEXT UNIQUE NOT NULL DEFAULT encode(extensions.gen_random_bytes(16), 'hex'),
   lead_id         UUID REFERENCES public.leads(id),
   closer_id       UUID REFERENCES public.profiles(id),
   deal_type       TEXT NOT NULL,
