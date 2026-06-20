@@ -1,4 +1,5 @@
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
 -- =========================================================
 -- 1) Magic tokens for playbook downloads via email
 -- =========================================================
@@ -88,7 +89,7 @@ BEGIN
     RAISE EXCEPTION 'playbook_not_found: %', _playbook_key;
   END IF;
 
-  v_token := encode(gen_random_bytes(32), 'hex');
+  v_token := encode(extensions.gen_random_bytes(32), 'hex');
 
   INSERT INTO public.playbook_magic_tokens (
     token, playbook_key, version, recipient_email, user_id, lead_id, source, expires_at

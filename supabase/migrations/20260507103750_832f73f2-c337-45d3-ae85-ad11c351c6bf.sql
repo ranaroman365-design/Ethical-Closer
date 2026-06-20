@@ -1,3 +1,5 @@
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
 -- ══════════════════════════════════════════════════════════════
 -- Canonical Unbooked-Lead Booking Continuation
 -- Layer: Conversion · Block: Acquisition → Conversion bridge
@@ -7,7 +9,7 @@
 CREATE TABLE IF NOT EXISTS public.lead_booking_tokens (
   id UUID NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
   lead_id UUID NOT NULL REFERENCES public.leads(id) ON DELETE CASCADE,
-  token TEXT NOT NULL DEFAULT encode(gen_random_bytes(32), 'hex'),
+  token TEXT NOT NULL DEFAULT encode(extensions.gen_random_bytes(32), 'hex'),
   expires_at TIMESTAMPTZ NOT NULL DEFAULT (now() + interval '30 days'),
   used_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
