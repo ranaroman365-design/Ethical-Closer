@@ -54,10 +54,22 @@ FOR SELECT
 TO authenticated
 USING (true);
 
+
 -- ============================================================
--- C. Unschedule cron job 53 (snapshot stored in docs/governance/phase-1a-rollback-snapshot.md)
+-- C. Unschedule cron job 53 if it exists
 -- ============================================================
-SELECT cron.unschedule(53);
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM cron.job
+    WHERE jobid = 53
+  ) THEN
+    PERFORM cron.unschedule(53);
+  ELSE
+    RAISE NOTICE 'Skipping cron.unschedule(53): job 53 does not exist in this database';
+  END IF;
+END $$;
 
 -- ============================================================
 -- D. SECURITY INVOKER view hardening skipped for fresh dev database
