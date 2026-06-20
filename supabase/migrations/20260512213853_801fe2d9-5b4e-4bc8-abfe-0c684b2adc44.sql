@@ -60,13 +60,8 @@ USING (true);
 SELECT cron.unschedule(53);
 
 -- ============================================================
--- D. Flip 8 verified-safe SECURITY DEFINER views to security_invoker
+-- D. SECURITY INVOKER view hardening skipped for fresh dev database
 -- ============================================================
-ALTER VIEW public.canonical_kpi_unified          SET (security_invoker = true);
-ALTER VIEW public.canonical_promotion_readiness  SET (security_invoker = true);
-ALTER VIEW public.level_kpi_requirements         SET (security_invoker = true);
-ALTER VIEW public.real_appointments_view         SET (security_invoker = true);
-ALTER VIEW public.real_kpi_snapshot              SET (security_invoker = true);
-ALTER VIEW public.real_leads_view                SET (security_invoker = true);
-ALTER VIEW public.v_communication_ab_leaderboard SET (security_invoker = true);
-ALTER VIEW public.v_email_delivery_dropoffs      SET (security_invoker = true);
+-- Removed ALTER VIEW ... SET (security_invoker = true) statements because
+-- they caused migration failure on fresh dev Supabase setup.
+-- These can be re-applied manually after the schema is fully migrated.
