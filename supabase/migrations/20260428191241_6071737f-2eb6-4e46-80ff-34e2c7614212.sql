@@ -4,7 +4,7 @@
 
 -- 0. Extensions
 CREATE EXTENSION IF NOT EXISTS pg_net WITH SCHEMA extensions;
-CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA extensions;
 
 -- 1. attendance_settings: add WA alert config
 ALTER TABLE public.attendance_settings
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS public.admin_alert_log (
   recipient_user_id UUID NOT NULL,
   to_whatsapp     TEXT NOT NULL,
   body            TEXT NOT NULL,
-  action_token    TEXT NOT NULL UNIQUE DEFAULT encode(gen_random_bytes(8), 'hex'),
+  action_token    TEXT NOT NULL UNIQUE DEFAULT encode(extensions.gen_random_bytes(8), 'hex'),
   twilio_sid      TEXT,
   status          TEXT NOT NULL DEFAULT 'pending', -- pending|sent|failed|stub|skipped
   skip_reason     TEXT,
